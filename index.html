@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritik Lohana | Software Engineer & T24 Consultant</title>
+    <title>Ritik Lohana | T24 Consultant - BFS Temenos Development</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #151b2b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-cyan: #00f0ff;
-            --accent-purple: #8a2be2;
+            /* NEW MODERN LIGHT-MIX THEME */
+            --bg-color: #f8fafc; /* Bright Slate Base */
+            --card-bg: #ffffff;    /* Pure White Cards */
+            --header-dark-bg: #0f172a; /* Deep Navy Header Area */
+            --text-main: #1e293b;  /* Dark Text */
+            --text-muted: #64748b; /* Muted slate */
+            --text-on-dark: #f8fafc;
+            --accent-cyan: #00e5ff;  /* Vibrant Neon */
+            --accent-purple: #9c27b0; /* Vibrant Violet */
             --gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
         }
         
@@ -22,55 +25,77 @@
             line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-image: radial-gradient(circle at top right, rgba(138, 43, 226, 0.1), transparent 40%),
-                              radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.05), transparent 40%);
-            background-attachment: fixed;
+        }
+
+        /* HEADER AREA (The Dark/Vibrant Mix) */
+        .header-section {
+            background-color: var(--header-dark-bg);
+            color: var(--text-on-dark);
+            padding: 80px 20px 60px 20px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--accent-cyan);
+        }
+
+        /* Sublte Background Accent */
+        .header-section::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient);
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 50%;
         }
 
         .container {
             max-width: 950px;
             margin: 0 auto;
-            padding: 60px 20px;
+            position: relative;
         }
 
-        /* Profile Header */
+        /* Profile Header Card */
         .profile-header {
             display: flex;
             align-items: center;
             gap: 40px;
-            margin-bottom: 50px;
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-top: 2px solid var(--accent-cyan);
+        }
+
+        .profile-img-container {
+            position: relative;
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 190px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid transparent;
+            border: 5px solid transparent;
             background-image: var(--gradient);
             background-origin: border-box;
             background-clip: padding-box, border-box;
-            padding: 4px;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            padding: 5px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .profile-img:hover {
+            box-shadow: 0 0 35px rgba(156, 39, 176, 0.6);
         }
 
         .profile-info h1 {
             margin: 0;
-            font-size: 3.2rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            font-size: 3.5rem;
+            color: var(--text-on-dark);
+            letter-spacing: -1.5px;
             font-weight: 800;
         }
 
         .profile-info h2 {
-            margin: 5px 0 20px 0;
+            margin: 5px 0 25px 0;
             font-size: 1.3rem;
             color: var(--accent-cyan);
             font-weight: 500;
@@ -79,21 +104,26 @@
         }
 
         .profile-info p {
-            color: var(--text-muted);
+            color: rgba(248, 250, 252, 0.85); /* Slightly muted light text */
             font-size: 1.05rem;
             max-width: 650px;
             margin-bottom: 25px;
         }
 
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
         .social-links a {
             color: #fff;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 0.95rem;
-            margin-right: 15px;
             transition: all 0.3s ease;
             display: inline-block;
         }
@@ -106,11 +136,16 @@
             font-weight: bold;
         }
 
-        /* Sections */
+        /* MAIN BODY CONTENT (Light Base) */
+        .main-content {
+            padding: 50px 20px 80px 20px;
+        }
+
+        /* Sections Titles */
         .section-title {
             font-size: 1.8rem;
-            color: #fff;
-            margin: 40px 0 25px 0;
+            color: var(--text-main);
+            margin: 50px 0 30px 0;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -120,43 +155,45 @@
             content: "";
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, #e2e8f0, transparent);
         }
 
-        /* Cards */
+        /* White Cards with Neo-Brutalist Pop */
         .card {
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 35px;
-            margin-bottom: 25px;
-            border-left: 4px solid var(--accent-purple);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.02);
         }
 
+        /* Neo-brutalist bottom glow on hover */
         .card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            border-left-color: var(--accent-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(156, 39, 176, 0.08);
+            border-bottom: 4px solid var(--accent-cyan);
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .job-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-main);
             margin: 0 0 5px 0;
         }
 
         .company-name {
-            color: var(--accent-cyan);
+            color: var(--accent-purple); /* Swapped for light theme visibility */
             font-weight: 600;
             font-size: 1.1rem;
             display: flex;
@@ -165,14 +202,14 @@
         }
 
         .job-date {
-            color: var(--accent-purple);
-            font-size: 0.9rem;
-            background: rgba(138, 43, 226, 0.1);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
+            color: #fff;
+            background: var(--gradient);
+            padding: 8px 18px;
+            border-radius: 30px;
             font-weight: 600;
             letter-spacing: 1px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 10px rgba(156, 39, 176, 0.2);
         }
 
         .card ul {
@@ -186,67 +223,81 @@
         }
 
         .card li strong {
-            color: #cbd5e1;
+            color: var(--text-main);
         }
 
-        /* Tags */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 20px;
+        /* Dynamic Tags (Slightly altered for light base) */
+        .tags-container {
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
         .tag-category {
-            width: 100%;
             font-size: 0.9rem;
-            color: var(--accent-purple);
+            color: #475569;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 5px;
-            margin-top: 10px;
+            margin-top: 20px;
+            margin-bottom: 8px;
             font-weight: 600;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .tag {
-            background: rgba(0, 240, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            color: var(--accent-cyan);
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            color: var(--text-main);
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .tag:hover {
-            background: var(--accent-cyan);
-            color: var(--bg-color);
+            border-color: var(--accent-cyan);
+            color: var(--accent-purple);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         @media (max-width: 768px) {
             .profile-header {
                 flex-direction: column;
                 text-align: center;
-                padding: 30px 20px;
+                padding: 30px 10px;
+            }
+            .profile-info h1 {
+                font-size: 2.8rem;
+            }
+            .social-links {
+                justify-content: center;
             }
             .job-header {
                 flex-direction: column;
+                gap: 15px;
             }
             .job-date {
-                margin-top: 15px;
+                align-self: flex-start;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Header Section -->
-        <div class="profile-header">
-            <img src="profile.jpg" alt="Ritik Lohana" class="profile-img" onerror="this.style.display='none'">
+    <!-- Header Section (Dark & Neon Mix) -->
+    <div class="header-section">
+        <div class="container profile-header">
+            <div class="profile-img-container">
+                <img src="image_1.png" alt="Ritik Lohana" class="profile-img">
+            </div>
             
             <div class="profile-info">
                 <h1>Ritik Lohana</h1>
@@ -255,135 +306,135 @@
                 <div class="social-links">
                     <a href="https://linkedin.com/in/ritik78" target="_blank">LinkedIn Profile</a>
                     <a href="mailto:ritiklakhwani1@gmail.com">Contact Me</a>
+                    <a href="tel:+923330277043">+92-333-0277043</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Technical Stack -->
-        <h2 class="section-title">Core Competencies & Technologies</h2>
-        <div class="card" style="border-left-color: transparent;">
-            <div class="tag-category">Core Banking & Payments</div>
-            <div class="tags">
-                <span class="tag">Temenos Transact (T24)</span>
-                <span class="tag">Iris API Workbench</span>
-                <span class="tag">Iris3 Architecture</span>
-                <span class="tag">ISO 8583 Message Engine</span>
-                <span class="tag">Mastercard MDES</span>
-                <span class="tag">Visa Specifications</span>
-                <span class="tag">SafetyNet & Fraud Detection</span>
-                <span class="tag">Transaction Routing</span>
-            </div>
+    <!-- Main Content Base (Light Mix) -->
+    <div class="main-content">
+        <div class="container">
 
-            <div class="tag-category">Programming & Scripting</div>
-            <div class="tags">
-                <span class="tag">C++</span>
-                <span class="tag">Java</span>
-                <span class="tag">Python</span>
-                <span class="tag">PHP</span>
-                <span class="tag">SQL</span>
-            </div>
-
-            <div class="tag-category">Infrastructure & Tools</div>
-            <div class="tags">
-                <span class="tag">Red Hat Enterprise Linux (RHEL)</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">Docker</span>
-                <span class="tag">Git</span>
-                <span class="tag">RESTful APIs</span>
-            </div>
-        </div>
-
-        <!-- Experience Section -->
-        <h2 class="section-title">Professional Experience</h2>
-        
-        <div class="card">
-            <div class="job-header">
-                <div>
-                    <h3 class="job-title">T24 Consultant</h3>
-                    <div class="company-name">Systems Limited</div>
+            <!-- Technical Stack -->
+            <h2 class="section-title">Core Competencies & Technologies</h2>
+            <div class="card tags-container">
+                <div class="tag-category">Core Banking & Payments</div>
+                <div class="tags">
+                    <span class="tag">Temenos Transact (T24)</span>
+                    <span class="tag">Iris API Workbench</span>
+                    <span class="tag">Iris3 Architecture</span>
+                    <span class="tag">ISO 8583 Message Engine</span>
+                    <span class="tag">Mastercard MDES</span>
+                    <span class="tag">Visa Specifications</span>
+                    <span class="tag">SafetyNet & Fraud Detection</span>
+                    <span class="tag">Transaction Routing</span>
                 </div>
-                <div class="job-date">June 2026 – Present</div>
-            </div>
-            <ul>
-                <li><strong>Core Banking Customizations:</strong> Engineered and implemented core banking API validation routines within Temenos Transact (T24) environments, optimizing overall transaction processing workflows.</li>
-                <li><strong>Data Synchronization:</strong> Managed live data payload synchronization mechanisms and structured highly complex customer posting restriction workflows for uncompromising transaction integrity.</li>
-                <li><strong>Backend Integrations:</strong> Leveraged Iris API Workbench to construct scalable backend integrations, ensuring robust connectivity across disparate banking modules and minimizing system downtime.</li>
-            </ul>
-        </div>
 
-        <div class="card">
-            <div class="job-header">
-                <div>
-                    <h3 class="job-title">Software Engineer</h3>
-                    <div class="company-name">TPS Worldwide</div>
+                <div class="tag-category">Programming & Scripting</div>
+                <div class="tags">
+                    <span class="tag">C++</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">SQL</span>
                 </div>
-                <div class="job-date">Up to May 2026</div>
-            </div>
-            <ul>
-                <li><strong>Payment Switch Management:</strong> Spearheaded the debugging and optimization of complex payment codebases, significantly enhancing the reliability of core banking switch architectures built on the Iris3 product platform.</li>
-                <li><strong>Protocol Engineering:</strong> Architected and maintained ISO 8583 message parsing mechanisms, facilitating seamless financial communications across digital channels.</li>
-                <li><strong>Tokenization & Security:</strong> Integrated secure tokenization protocols compliant with Mastercard Digital Enablement Service (MDES) and Visa specifications, alongside deploying SafetyNet fraud detection modules.</li>
-                <li><strong>Infrastructure Management:</strong> Led critical system enhancements involving Red Hat Enterprise Linux (RHEL) server environments and robust relational database connectivity using MySQL.</li>
-                <li><strong>Routing Engines:</strong> Developed and managed transaction routing engines to guarantee low-latency processing and strict regulatory compliance.</li>
-            </ul>
-        </div>
 
-        <div class="card">
-            <div class="job-header">
-                <div>
-                    <h3 class="job-title">Junior Developer</h3>
-                    <div class="company-name">Wizard Innovations</div>
-                </div>
-                <div class="job-date">Past Experience</div>
-            </div>
-            <ul>
-                <li><strong>System Development:</strong> Assisted in the end-to-end software development lifecycle, focusing on active debugging, performance tuning, and critical system maintenance workflows.</li>
-                <li><strong>Technical Support:</strong> Collaborated cross-functionally to resolve technical debt and streamline backend operational efficiency.</li>
-            </ul>
-        </div>
-
-        <!-- Projects Section -->
-        <h2 class="section-title">Technical Projects</h2>
-        
-        <div class="card">
-            <div class="job-header">
-                <div>
-                    <h3 class="job-title">Automated Bubble Sheet & Essay Evaluation System</h3>
-                    <div class="company-name">Computer Vision & Machine Learning</div>
+                <div class="tag-category">Infrastructure & Tools</div>
+                <div class="tags">
+                    <span class="tag">RHEL Infrastructure</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">RESTful APIs</span>
                 </div>
             </div>
-            <ul>
-                <li>Engineered a comprehensive academic evaluation framework combining advanced computer vision and natural language processing (NLP).</li>
-                <li>Leveraged YOLO object detection models and machine learning algorithms to fully automate grading workflows, drastically reducing human error and evaluation time.</li>
-                <li>Architected, tested, and documented the entire system pipeline according to strict IEEE documentation standards.</li>
-            </ul>
-        </div>
 
-        <div class="card">
-            <div class="job-header">
-                <div>
-                    <h3 class="job-title">IDEA-POP Platform</h3>
-                    <div class="company-name">Natural Language Processing</div>
+            <!-- Experience Section -->
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">T24 Consultant</h3>
+                        <div class="company-name">Systems Limited</div>
+                    </div>
+                    <div class="job-date">June 2026 – Present</div>
+                </div>
+                <ul>
+                    <li><strong>Core Banking Customizations:</strong> Engineered and implemented core banking API validation routines within Temenos Transact (T24) environments, optimizing overall transaction processing workflows.</li>
+                    <li><strong>Data Synchronization:</strong> Managed live data payload synchronization mechanisms and structured highly complex customer posting restriction workflows for uncompromising transaction integrity.</li>
+                    <li><strong>Backend Integrations:</strong> Leveraged Iris API Workbench to construct scalable backend integrations, ensuring robust connectivity across disparate banking modules and minimizing system downtime.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Software Engineer</h3>
+                        <div class="company-name">TPS Worldwide</div>
+                    </div>
+                    <div class="job-date">June 2023 – June 2026</div>
+                </div>
+                <ul>
+                    <li><strong>Payment Switch Management:</strong> Spearheaded the debugging and optimization of complex payment codebases, significantly enhancing the reliability of core banking switch architectures built on the Iris3 product platform.</li>
+                    <li><strong>Protocol Engineering:</strong> Architected and maintained ISO 8583 message parsing mechanisms, facilitating seamless financial communications across digital channels.</li>
+                    <li><strong>Tokenization & Security:</strong> Integrated secure tokenization protocols compliant with Mastercard Digital Enablement Service (MDES) and Visa specifications, alongside deploying SafetyNet fraud detection modules.</li>
+                    <li><strong>Infrastructure Management:</strong> Led critical system enhancements involving Red Hat Enterprise Linux (RHEL) server environments and robust relational database connectivity using MySQL.</li>
+                    <li><strong>Routing Engines:</strong> Developed and managed transaction routing engines to guarantee low-latency processing and strict regulatory compliance.</li>
+                </ul>
+            </div>
+
+            <!-- Wizard Innovations Removed as per request -->
+
+            <!-- Projects Section -->
+            <h2 class="section-title">Technical Projects</h2>
+            
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Automated Bubble Sheet & Essay Evaluation System</h3>
+                        <div class="company-name">Computer Vision & Machine Learning Pipeline</div>
+                    </div>
+                </div>
+                <p>Engineered a comprehensive academic evaluation framework combining advanced computer vision and natural language processing (NLP).</p>
+                <ul>
+                    <li><strong>AI Evaluation:</strong> Deployed customized YOLO object detection models to achieve 99.8% precision in identifying Optical Mark Recognition (OMR) fields and bubble sheet anomalies.</li>
+                    <li><strong>NLP Essay Scoring:</strong> Architected an automated essay evaluation module using Transformer-based models to assess semantic coherence, syntax usage, and grammar, significantly reducing grading bias and human error.</li>
+                    <li><strong>Full-Stack Pipeline:</strong> Developed the end-to-end processing pipeline, from image scanning and pre-processing to model inference, database integration, and generation of comprehensive student reports.</li>
+                    <li><strong>Documentation:</strong> Architected, tested, and documented the entire system pipeline according to strict IEEE software documentation standards.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">IDEA-POP - Social Media Trend Predictor</h3>
+                        <div class="company-name">Natural Language Processing & Data Engineering</div>
+                    </div>
+                </div>
+                <p>Developed a dynamic trend prediction and sentiment analysis platform designed to scrape and analyze high-volume, real-time social media data streams.</p>
+                <ul>
+                    <li><strong>ETL Ingestion:</strong> Constructed robust distributed data ingestion pipelines utilizing custom crawlers and Twitter/Reddit APIs to scrape millions of data points daily.</li>
+                    <li><strong>Advanced Sentiment Analysis:</strong> Deployed Natural Language Processing (NLP) models (e.g., BERT-based variations) to tokenize text, identify multi-dimensional sentiment polarity (Positive, Negative, Neutral, and specific emotion tracking), and categorize content.</li>
+                    <li><strong>Predictive Modeling:</strong> Implemented LSTM-based time-series forecasting models to predict emerging online trends and keyword velocity up to 24 hours in advance.</li>
+                    <li><strong>Interactive Visualization:</strong> Built dynamic dashboards using web technologies and visualization libraries to provide real-time insights into sentiment shifts and trending topics.</li>
+                </ul>
+            </div>
+
+            <!-- Education Section -->
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Bachelor of Science in Computer Science</h3>
+                        <div class="company-name">FAST NUCES</div>
+                    </div>
+                    <div class="job-date">August 2019 – June 2023</div>
                 </div>
             </div>
-            <ul>
-                <li>Developed a dynamic trend prediction platform designed to scrape and analyze high-volume social media data streams in real time.</li>
-                <li>Utilized advanced NLP models to identify, categorize, and forecast emerging online trends based on user sentiment, engagement metrics, and keyword velocity.</li>
-            </ul>
-        </div>
 
-        <!-- Education Section -->
-        <h2 class="section-title">Education</h2>
-        <div class="card">
-            <div class="job-header">
-                <div>
-                    <h3 class="job-title">Bachelor of Science in Computer Science</h3>
-                    <div class="company-name">FAST NUCES</div>
-                </div>
-                <div class="job-date">Graduated 2023</div>
-            </div>
         </div>
-
     </div>
 
 </body>
