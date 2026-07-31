@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritik Lohana | T24 Consultant - BFS Temenos Development</title>
+    <title>Ritik Lohana | T24 Consultant & Senior Software Engineer</title>
     <style>
         :root {
-            /* NEW MODERN LIGHT-MIX THEME */
-            --bg-color: #f8fafc; /* Bright Slate Base */
-            --card-bg: #ffffff;    /* Pure White Cards */
-            --header-dark-bg: #0f172a; /* Deep Navy Header Area */
-            --text-main: #1e293b;  /* Dark Text */
-            --text-muted: #64748b; /* Muted slate */
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --header-dark-bg: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
             --text-on-dark: #f8fafc;
-            --accent-cyan: #00e5ff;  /* Vibrant Neon */
-            --accent-purple: #9c27b0; /* Vibrant Violet */
+            --accent-cyan: #00e5ff;
+            --accent-purple: #9c27b0;
             --gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
         }
         
@@ -27,7 +26,7 @@
             padding: 0;
         }
 
-        /* HEADER AREA (The Dark/Vibrant Mix) */
+        /* HEADER AREA */
         .header-section {
             background-color: var(--header-dark-bg);
             color: var(--text-on-dark);
@@ -37,7 +36,6 @@
             border-bottom: 2px solid var(--accent-cyan);
         }
 
-        /* Sublte Background Accent */
         .header-section::after {
             content: "";
             position: absolute;
@@ -57,7 +55,6 @@
             position: relative;
         }
 
-        /* Profile Header Card */
         .profile-header {
             display: flex;
             align-items: center;
@@ -104,7 +101,7 @@
         }
 
         .profile-info p {
-            color: rgba(248, 250, 252, 0.85); /* Slightly muted light text */
+            color: rgba(248, 250, 252, 0.85);
             font-size: 1.05rem;
             max-width: 650px;
             margin-bottom: 25px;
@@ -125,7 +122,9 @@
             border-radius: 8px;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .social-links a:hover {
@@ -136,12 +135,11 @@
             font-weight: bold;
         }
 
-        /* MAIN BODY CONTENT (Light Base) */
+        /* MAIN BODY CONTENT */
         .main-content {
             padding: 50px 20px 80px 20px;
         }
 
-        /* Sections Titles */
         .section-title {
             font-size: 1.8rem;
             color: var(--text-main);
@@ -158,7 +156,6 @@
             background: linear-gradient(90deg, #e2e8f0, transparent);
         }
 
-        /* White Cards with Neo-Brutalist Pop */
         .card {
             background-color: var(--card-bg);
             border-radius: 16px;
@@ -171,7 +168,6 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.02);
         }
 
-        /* Neo-brutalist bottom glow on hover */
         .card:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(156, 39, 176, 0.08);
@@ -193,7 +189,7 @@
         }
 
         .company-name {
-            color: var(--accent-purple); /* Swapped for light theme visibility */
+            color: var(--accent-purple);
             font-weight: 600;
             font-size: 1.1rem;
             display: flex;
@@ -226,7 +222,7 @@
             color: var(--text-main);
         }
 
-        /* Dynamic Tags (Slightly altered for light base) */
+        /* Dynamic Tags */
         .tags-container {
             margin-top: 30px;
             margin-bottom: 30px;
@@ -237,11 +233,15 @@
             color: #475569;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 20px;
-            margin-bottom: 8px;
+            margin-top: 25px;
+            margin-bottom: 12px;
             font-weight: 600;
             border-bottom: 1px solid #e2e8f0;
             padding-bottom: 5px;
+        }
+        
+        .tag-category:first-child {
+            margin-top: 10px;
         }
 
         .tags {
@@ -292,11 +292,12 @@
 </head>
 <body>
 
-    <!-- Header Section (Dark & Neon Mix) -->
+    <!-- Header Section -->
     <div class="header-section">
         <div class="container profile-header">
             <div class="profile-img-container">
-                <img src="image_1.png" alt="Ritik Lohana" class="profile-img">
+                <!-- Image tag is now looking specifically for profile.png -->
+                <img src="profile.png" alt="Ritik Lohana" class="profile-img">
             </div>
             
             <div class="profile-info">
@@ -304,49 +305,67 @@
                 <h2>Software Engineer & T24 Consultant</h2>
                 <p>Specializing in core banking architectures, real-time transaction processing, and payment switch systems. Dedicated to building secure, high-volume financial infrastructures and implementing advanced technical integrations across global banking standards.</p>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/ritik78" target="_blank">LinkedIn Profile</a>
-                    <a href="mailto:ritiklakhwani1@gmail.com">Contact Me</a>
-                    <a href="tel:+923330277043">+92-333-0277043</a>
+                    <a href="https://linkedin.com/in/ritik78" target="_blank">🔗 LinkedIn</a>
+                    <a href="mailto:ritiklakhwani1@gmail.com">✉️ Contact Me</a>
+                    <a href="tel:+923330277043">📞 Phone: +92 333 0277043</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Content Base (Light Mix) -->
+    <!-- Main Content -->
     <div class="main-content">
         <div class="container">
 
             <!-- Technical Stack -->
             <h2 class="section-title">Core Competencies & Technologies</h2>
             <div class="card tags-container">
+                
                 <div class="tag-category">Core Banking & Payments</div>
                 <div class="tags">
+                    <span class="tag">Banking Switch</span>
+                    <span class="tag">Payment Schemes</span>
+                    <span class="tag">Cards Processing</span>
                     <span class="tag">Temenos Transact (T24)</span>
-                    <span class="tag">Iris API Workbench</span>
-                    <span class="tag">Iris3 Architecture</span>
-                    <span class="tag">ISO 8583 Message Engine</span>
+                    <span class="tag">Tokenization</span>
                     <span class="tag">Mastercard MDES</span>
                     <span class="tag">Visa Specifications</span>
-                    <span class="tag">SafetyNet & Fraud Detection</span>
-                    <span class="tag">Transaction Routing</span>
                 </div>
 
-                <div class="tag-category">Programming & Scripting</div>
+                <div class="tag-category">Security & Hardware</div>
+                <div class="tags">
+                    <span class="tag">HSM (Hardware Security Module)</span>
+                    <span class="tag">PCI-DSS</span>
+                    <span class="tag">SafetyNet & Fraud Detection</span>
+                </div>
+
+                <div class="tag-category">Protocols & Integrations</div>
+                <div class="tags">
+                    <span class="tag">ISO 8583 Message Engine</span>
+                    <span class="tag">NDC Protocol</span>
+                    <span class="tag">ATM Download Images</span>
+                    <span class="tag">SOAP API</span>
+                    <span class="tag">RESTful APIs</span>
+                    <span class="tag">Iris API Workbench</span>
+                </div>
+
+                <div class="tag-category">Testing & Deployment</div>
+                <div class="tags">
+                    <span class="tag">SIT (System Integration Testing)</span>
+                    <span class="tag">UAT (User Acceptance Testing)</span>
+                    <span class="tag">Go-Live & Production Support</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">RHEL Infrastructure</span>
+                </div>
+
+                <div class="tag-category">Programming & Databases</div>
                 <div class="tags">
                     <span class="tag">C++</span>
                     <span class="tag">Java</span>
                     <span class="tag">Python</span>
                     <span class="tag">PHP</span>
-                    <span class="tag">SQL</span>
-                </div>
-
-                <div class="tag-category">Infrastructure & Tools</div>
-                <div class="tags">
-                    <span class="tag">RHEL Infrastructure</span>
                     <span class="tag">MySQL</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">RESTful APIs</span>
                 </div>
             </div>
 
@@ -378,14 +397,12 @@
                 </div>
                 <ul>
                     <li><strong>Payment Switch Management:</strong> Spearheaded the debugging and optimization of complex payment codebases, significantly enhancing the reliability of core banking switch architectures built on the Iris3 product platform.</li>
-                    <li><strong>Protocol Engineering:</strong> Architected and maintained ISO 8583 message parsing mechanisms, facilitating seamless financial communications across digital channels.</li>
-                    <li><strong>Tokenization & Security:</strong> Integrated secure tokenization protocols compliant with Mastercard Digital Enablement Service (MDES) and Visa specifications, alongside deploying SafetyNet fraud detection modules.</li>
-                    <li><strong>Infrastructure Management:</strong> Led critical system enhancements involving Red Hat Enterprise Linux (RHEL) server environments and robust relational database connectivity using MySQL.</li>
-                    <li><strong>Routing Engines:</strong> Developed and managed transaction routing engines to guarantee low-latency processing and strict regulatory compliance.</li>
+                    <li><strong>Protocol Engineering:</strong> Architected and maintained ISO 8583 message parsing mechanisms and NDC Protocols, facilitating seamless financial communications across digital channels and managing ATM download images.</li>
+                    <li><strong>Security & Tokenization:</strong> Integrated secure tokenization protocols compliant with Mastercard Digital Enablement Service (MDES) and Visa specifications, utilized HSMs for cryptographic operations, ensured PCI-DSS compliance, and deployed SafetyNet fraud detection modules.</li>
+                    <li><strong>Testing & Delivery:</strong> Directed end-to-end testing lifecycles including SIT (System Integration Testing) and UAT (User Acceptance Testing), ultimately providing comprehensive Go-Live and production support.</li>
+                    <li><strong>Infrastructure & Routing:</strong> Led critical system enhancements involving RHEL environments, SOAP/REST APIs, and developed transaction routing engines to guarantee low-latency processing and regulatory compliance.</li>
                 </ul>
             </div>
-
-            <!-- Wizard Innovations Removed as per request -->
 
             <!-- Projects Section -->
             <h2 class="section-title">Technical Projects</h2>
@@ -409,7 +426,7 @@
             <div class="card">
                 <div class="job-header">
                     <div>
-                        <h3 class="job-title">IDEA-POP - Social Media Trend Predictor</h3>
+                        <h3 class="job-title">IDEA-POP Platform</h3>
                         <div class="company-name">Natural Language Processing & Data Engineering</div>
                     </div>
                 </div>
