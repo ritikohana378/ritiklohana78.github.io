@@ -3,80 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritik Lohana | Software Engineer & Temenos T24 Consultant</title>
+    <title>Ritik Lohana | Software Engineer & T24 Consultant</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem; }
-        h1, h2, h3 { color: #111; }
-        .header { border-bottom: 2px solid #eaeaea; padding-bottom: 1rem; margin-bottom: 2rem; }
-        .links a { margin-right: 15px; color: #0366d6; text-decoration: none; font-weight: bold; }
-        .links a:hover { text-decoration: underline; }
-        .section { margin-bottom: 2rem; }
-        .tag { background: #f1f8ff; color: #0366d6; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
-        .project-card { border: 1px solid #eaeaea; padding: 1.5rem; border-radius: 6px; margin-bottom: 1rem; }
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151b2b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #8a2be2;
+            --gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at top right, rgba(138, 43, 226, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.05), transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 2px solid var(--accent-cyan);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background-image: var(--gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            padding: 4px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .profile-info h1 {
+            margin: 0;
+            font-size: 3.2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+
+        .profile-info h2 {
+            margin: 5px 0 20px 0;
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .profile-info p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+            font-weight: bold;
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 40px 0 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-purple);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 5px 0;
+        }
+
+        .company-name {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .job-date {
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .card li strong {
+            color: #cbd5e1;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--accent-cyan);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .job-header {
+                flex-direction: column;
+            }
+            .job-date {
+                margin-top: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Ritik Lohana</h1>
-        <p>Software Engineer & T24 Consultant | Specialized in Core Banking Infrastructure & Fintech</p>
-        <div class="links">
-            <a href="https://linkedin.com/in/ritik78" target="_blank">LinkedIn</a>
-            <a href="mailto:your.email@example.com">Contact</a>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="profile-header">
+            <img src="profile.jpg" alt="Ritik Lohana" class="profile-img" onerror="this.style.display='none'">
+            
+            <div class="profile-info">
+                <h1>Ritik Lohana</h1>
+                <h2>Software Engineer & T24 Consultant</h2>
+                <p>Specializing in core banking architectures, real-time transaction processing, and payment switch systems. Dedicated to building secure, high-volume financial infrastructures and implementing advanced technical integrations.</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/ritik78" target="_blank">LinkedIn Profile</a>
+                    <a href="mailto:your.email@example.com">Contact Me</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>I am a Software Engineer and Fintech Consultant specializing in core banking architectures, real-time transaction processing, and payment switch systems. With experience spanning Temenos Transact (T24) environments, Iris API Workbench, and ISO 8583 message formatting, I focus on building and optimizing secure, high-volume financial infrastructures.</p>
-    </div>
-
-    <div class="section">
-        <h2>Technical Stack</h2>
-        <div>
-            <span class="tag">C++ / Java / Python / PHP</span>
-            <span class="tag">Temenos T24</span>
-            <span class="tag">Iris API Workbench</span>
-            <span class="tag">ISO 8583 Engine</span>
-            <span class="tag">Mastercard MDES & Visa Specs</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Git</span>
+        <!-- Technical Stack -->
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="card" style="border-left-color: transparent;">
+            <div class="tags">
+                <span class="tag">Temenos Transact (T24)</span>
+                <span class="tag">Iris API Workbench</span>
+                <span class="tag">Iris3 Architecture</span>
+                <span class="tag">ISO 8583 Message Engine</span>
+                <span class="tag">Mastercard MDES</span>
+                <span class="tag">Visa Specifications</span>
+                <span class="tag">SafetyNet & Fraud Detection</span>
+                <span class="tag">C++ / Java / Python / PHP</span>
+                <span class="tag">RHEL Infrastructure</span>
+                <span class="tag">MySQL / DB Connectivity</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Git</span>
+            </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Experience</h2>
-        <div class="project-card">
-            <h3>T24 Consultant</h3>
-            <p><strong>Systems Limited</strong> | 2026 - Present</p>
+        <!-- Experience Section -->
+        <h2 class="section-title">Professional Experience</h2>
+        
+        <div class="card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">T24 Consultant</h3>
+                    <div class="company-name">Systems Limited</div>
+                </div>
+                <div class="job-date">June 2026 – Present</div>
+            </div>
             <ul>
-                <li>Developing and implementing core banking API validation routines within Temenos Transact (T24) environments.</li>
-                <li>Handling live data payload synchronization and structuring customer posting restriction workflows.</li>
-                <li>Utilizing Iris API Workbench for backend integrations and deployments.</li>
+                <li><strong>Core Banking Customizations:</strong> Developing and implementing specialized API validation routines within Temenos Transact (T24) environments.</li>
+                <li><strong>Data Synchronization:</strong> Handling live data payload synchronization and structuring customer posting restriction workflows for robust transaction integrity.</li>
+                <li><strong>Backend Integrations:</strong> Utilizing Iris API Workbench for backend integrations, ensuring seamless system deployments and connectivity across banking modules.</li>
             </ul>
         </div>
-        <div class="project-card">
-            <h3>Software Engineer</h3>
-            <p><strong>TPS Worldwide</strong> | Past</p>
+
+        <div class="card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Software Engineer</h3>
+                    <div class="company-name">TPS Worldwide</div>
+                </div>
+                <div class="job-date">Up to May 2026</div>
+            </div>
             <ul>
-                <li>Debugged payment codebases and managed core banking switch architectures using Iris3.</li>
-                <li>Handled transaction routing engines and compliance frameworks for digital banking channels.</li>
+                <li><strong>Payment Switch Management:</strong> Debugged complex payment codebases and managed core banking switch architectures operating on the Iris3 product platform.</li>
+                <li><strong>Protocol Engineering:</strong> Engineered ISO 8583 message parsing mechanisms and managed infrastructure upgrades involving RHEL and robust database connectivity.</li>
+                <li><strong>Tokenization & Security:</strong> Implemented Mastercard tokenization (MDES) compliance frameworks and integrated SafetyNet fraud detection modules across diverse digital banking channels.</li>
+                <li><strong>Routing Engines:</strong> Handled transaction routing engines to ensure low-latency processing and regulatory compliance.</li>
             </ul>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Featured Projects</h2>
-        <div class="project-card">
-            <h3>Automated Bubble Sheet & Essay Evaluation System</h3>
-            <p>Engineered an academic evaluation framework using computer vision and natural language processing. The system leverages YOLO object detection models to automate grading workflows, accompanied by comprehensive IEEE-standard documentation.</p>
+        <div class="card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Junior Developer</h3>
+                    <div class="company-name">Wizard Innovations</div>
+                </div>
+                <div class="job-date">Past Experience</div>
+            </div>
+            <ul>
+                <li>Assisted in the end-to-end software development lifecycle, focusing on active debugging and system maintenance workflows.</li>
+            </ul>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Education</h2>
-        <p><strong>Bachelor of Science in Computer Science</strong><br>FAST NUCES | Graduated 2023</p>
+        <!-- Projects Section -->
+        <h2 class="section-title">Technical Projects</h2>
+        
+        <div class="card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Automated Bubble Sheet & Essay Evaluation System</h3>
+                    <div class="company-name">Computer Vision & Machine Learning</div>
+                </div>
+            </div>
+            <ul>
+                <li>Engineered a comprehensive academic evaluation framework combining advanced computer vision and natural language processing.</li>
+                <li>Leveraged YOLO object detection models and machine learning algorithms to fully automate grading workflows and reduce human error.</li>
+                <li>Architected and documented the entire system pipeline according to strict IEEE documentation standards.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">IDEA-POP Platform</h3>
+                    <div class="company-name">Natural Language Processing</div>
+                </div>
+            </div>
+            <ul>
+                <li>Developed a dynamic trend prediction platform designed to scrape and analyze high-volume social media data streams.</li>
+                <li>Utilized Natural Language Processing (NLP) models to identify, categorize, and forecast emerging online trends based on user sentiment and keyword velocity.</li>
+            </ul>
+        </div>
+
+        <!-- Education Section -->
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Bachelor of Science in Computer Science</h3>
+                    <div class="company-name">FAST NUCES</div>
+                </div>
+                <div class="job-date">Graduated 2023</div>
+            </div>
+        </div>
+
     </div>
 
 </body>
